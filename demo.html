@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Knowledge Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            /* LegalX's brand background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 100%;
+            border-top: 4px solid #003366;
+            /* LegalX Blue */
+        }
+
+        h1 {
+            text-align: center;
+            color: #003366;
+            /* LegalX Blue */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #003366;
+            /* LegalX Blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            background-color: #00254d;
+            /* Darker LegalX Blue */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Legal Knowledge Center</h1>
+        <form id="knowledgeForm">
+            <label for="country">Choose Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+                <option value="Canada">Canada</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="China">China</option>
+                <option value="Japan">Japan</option>
+                <option value="Brazil">Brazil</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Russia">Russia</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Italy">Italy</option>
+                <option value="Spain">Spain</option>
+            </select>
+
+            <label for="category">Choose Law Category:</label>
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Traffic">Traffic</option>
+                <option value="Crime">Crime</option>
+                <option value="Family">Family</option>
+                <option value="Property">Property</option>
+                <option value="Tax">Tax</option>
+                <option value="Employment">Employment</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Intellectual Property">Intellectual Property</option>
+                <option value="Immigration">Immigration</option>
+                <option value="Banking">Banking</option>
+                <option value="Contract">Contract</option>
+                <option value="Consumer Rights">Consumer Rights</option>
+                <option value="Environmental">Environmental</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Privacy">Privacy</option>
+                <option value="Education">Education</option>
+                <option value="Human Rights">Human Rights</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Technology">Technology</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Criminal Defense">Criminal Defense</option>
+                <option value="Patent">Patent</option>
+                <option value="Trademark">Trademark</option>
+                <option value="Divorce">Divorce</option>
+                <option value="Wills and Trusts">Wills and Trusts</option>
+                <option value="Bankruptcy">Bankruptcy</option>
+                <option value="Adoption">Adoption</option>
+                <option value="Civil Rights">Civil Rights</option>
+                <option value="Social Security">Social Security</option>
+            </select>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('knowledgeForm').addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent form from submitting
+
+            const country = document.getElementById('country').value;
+            const category = document.getElementById('category').value;
+
+            // Mapping country and category to Wikipedia links
+            const links = {
+                'India': {
+                    'Traffic': 'https://en.wikipedia.org/wiki/Traffic_in_India',
+                    'Crime': 'https://en.wikipedia.org/wiki/Crime_in_India',
+                    'Family': 'https://en.wikipedia.org/wiki/Family_law_in_India',
+                    'Property': 'https://en.wikipedia.org/wiki/Land_law_in_India',
+                    'Tax': 'https://en.wikipedia.org/wiki/Taxation_in_India',
+                    'Employment': 'https://en.wikipedia.org/wiki/Labour_law_in_India',
+                    'Corporate': 'https://en.wikipedia.org/wiki/Corporate_law_in_India',
+                    'Intellectual Property': 'https://en.wikipedia.org/wiki/Intellectual_property_in_India',
+                    'Immigration': 'https://en.wikipedia.org/wiki/Immigration_to_India',
+                    'Banking': 'https://en.wikipedia.org/wiki/Banking_in_India',
+                    'Contract': 'https://en.wikipedia.org/wiki/Indian_Contract_Act',
+                    'Consumer Rights': 'https://en.wikipedia.org/wiki/Consumer_protection_in_India',
+                    'Environmental': 'https://en.wikipedia.org/wiki/Environmental_law_in_India',
+                    'Cybersecurity': 'https://en.wikipedia.org/wiki/Cybersecurity_in_India',
+                    'Privacy': 'https://en.wikipedia.org/wiki/Privacy_in_India',
+                    'Education': 'https://en.wikipedia.org/wiki/Education_in_India',
+                    'Human Rights': 'https://en.wikipedia.org/wiki/Human_rights_in_India',
+                    'Insurance': 'https://en.wikipedia.org/wiki/Insurance_in_India',
+                    'Healthcare': 'https://en.wikipedia.org/wiki/Healthcare_in_India',
+                    'Technology': 'https://en.wikipedia.org/wiki/Information_technology_in_India',
+                    'Real Estate': 'https://en.wikipedia.org/wiki/Real_estate_in_India',
+                    'Criminal Defense': 'https://en.wikipedia.org/wiki/Criminal_law_in_India',
+                    'Patent': 'https://en.wikipedia.org/wiki/Indian_Patent_Act',
+                    'Trademark': 'https://en.wikipedia.org/wiki/Trademark_law_in_India',
+                    'Divorce': 'https://en.wikipedia.org/wiki/Divorce_in_India',
+                    'Wills and Trusts': 'https://en.wikipedia.org/wiki/Will_and_testament',
+                    'Bankruptcy': 'https://en.wikipedia.org/wiki/Insolvency_and_Bankruptcy_Code',
+                    'Adoption': 'https://en.wikipedia.org/wiki/Adoption_in_India',
+                    'Civil Rights': 'https://en.wikipedia.org/wiki/Human_rights_in_India',
+                    'Social Security': 'https://en.wikipedia.org/wiki/Social_security_in_India'
+                },
+                'USA': {
+                    'Traffic': 'https://en.wikipedia.org/wiki/Traffic_in_the_United_States',
+                    'Crime': 'https://en.wikipedia.org/wiki/Crime_in_the_United_States',
+                    'Family': 'https://en.wikipedia.org/wiki/Family_law_in_the_United_States',
+                    'Property': 'https://en.wikipedia.org/wiki/Real_estate_in_the_United_States',
+                    'Tax': 'https://en.wikipedia.org/wiki/Taxation_in_the_United_States',
+                    'Employment': 'https://en.wikipedia.org/wiki/Labor_law_in_the_United_States',
+                    'Corporate': 'https://en.wikipedia.org/wiki/Corporate_law_in_the_United_States',
+                    'Intellectual Property': 'https://en.wikipedia.org/wiki/Intellectual_property_in_the_United_States',
+                    'Immigration': 'https://en.wikipedia.org/wiki/Immigration_to_the_United_States',
+                    'Banking': 'https://en.wikipedia.org/wiki/Banking_in_the_United_States',
+                    'Contract': 'https://en.wikipedia.org/wiki/Contract_law_in_the_United_States',
+                    'Consumer Rights': 'https://en.wikipedia.org/wiki/Consumer_protection_in_the_United_States',
+                    'Environmental': 'https://en.wikipedia.org/wiki/Environmental_law_in_the_United_States',
+                    'Cybersecurity': 'https://en.wikipedia.org/wiki/Cybersecurity_in_the_United_States',
+                    'Privacy': 'https://en.wikipedia.org/wiki/Privacy_laws_of_the_United_States',
+                    'Education': 'https://en.wikipedia.org/wiki/Education_in_the_United_States',
+                    'Human Rights': 'https://en.wikipedia.org/wiki/Human_rights_in_the_United_States',
+                    'Insurance': 'https://en.wikipedia.org/wiki/Health_insurance_in_the_United_States',
+                    'Healthcare': 'https://en.wikipedia.org/wiki/Health_care_in_the_United_States',
+                    'Technology': 'https://en.wikipedia.org/wiki/Technology_in_the_United_States',
+                    'Real Estate': 'https://en.wikipedia.org/wiki/Real_estate_in_the_United_States',
+                    'Criminal Defense': 'https://en.wikipedia.org/wiki/Criminal_defense_lawyer',
+                    'Patent': 'https://en.wikipedia.org/wiki/United_States_patent_law',
+                    'Trademark': 'https://en.wikipedia.org/wiki/United_States_trademark_law',
+                    'Divorce': 'https://en.wikipedia.org/wiki/Divorce_law_in_the_United_States',
+                    'Wills and Trusts': 'https://en.wikipedia.org/wiki/Trust_law_in_the_United_States',
+                    'Bankruptcy': 'https://en.wikipedia.org/wiki/Bankruptcy_in_the_United_States',
+                    'Adoption': 'https://en.wikipedia.org/wiki/Adoption_in_the_United_States',
+                    'Civil Rights': 'https://en.wikipedia.org/wiki/Civil_rights_in_the_United_States',
+                    'Social Security': 'https://en.wikipedia.org/wiki/Social_Security_(United_States)'
+                },
+                'UK': {
+                    'Traffic': 'https://en.wikipedia.org/wiki/Road_traffic_regulation_in_the_United_Kingdom',
+                    'Crime': 'https://en.wikipedia.org/wiki/Crime_in_the_United_Kingdom',
+                    'Family': 'https://en.wikipedia.org/wiki/Family_law_in_the_United_Kingdom',
+                    'Property': 'https://en.wikipedia.org/wiki/English_land_law',
+                    'Tax': 'https://en.wikipedia.org/wiki/Taxation_in_the_United_Kingdom',
+                    'Employment': 'https://en.wikipedia.org/wiki/Employment_law_in_the_United_Kingdom',
+                    'Corporate': 'https://en.wikipedia.org/wiki/United_Kingdom_corporate_law',
+                    'Intellectual Property': 'https://en.wikipedia.org/wiki/Intellectual_property_law_of_the_United_Kingdom',
+                    'Immigration': 'https://en.wikipedia.org/wiki/Immigration_to_the_United_Kingdom',
+                    'Banking': 'https://en.wikipedia.org/wiki/Banking_in_the_United_Kingdom',
+                    'Contract': 'https://en.wikipedia.org/wiki/English_contract_law',
+                    'Consumer Rights': 'https://en.wikipedia.org/wiki/Consumer_protection_in_the_United_Kingdom',
+                    'Environmental': 'https://en.wikipedia.org/wiki/Environmental_law_in_the_United_Kingdom',
+                    'Cybersecurity': 'https://en.wikipedia.org/wiki/Cybersecurity_in_the_United_Kingdom',
+                    'Privacy': 'https://en.wikipedia.org/wiki/Privacy_in_the_United_Kingdom',
+                    'Education': 'https://en.wikipedia.org/wiki/Education_in_England',
+                    'Human Rights': 'https://en.wikipedia.org/wiki/Human_rights_in_the_United_Kingdom',
+                    'Insurance': 'https://en.wikipedia.org/wiki/Insurance_law_in_the_United_Kingdom',
+                    'Healthcare': 'https://en.wikipedia.org/wiki/National_Health_Service',
+                    'Technology': 'https://en.wikipedia.org/wiki/Technology_in_the_United_Kingdom',
+                    'Real Estate': 'https://en.wikipedia.org/wiki/Real_estate_in_the_United_Kingdom',
+                    'Criminal Defense': 'https://en.wikipedia.org/wiki/Criminal_law_of_England_and_Wales',
+                    'Patent': 'https://en.wikipedia.org/wiki/United_Kingdom_patent_law',
+                    'Trademark': 'https://en.wikipedia.org/wiki/United_Kingdom_trade_mark_law',
+                    'Divorce': 'https://en.wikipedia.org/wiki/Divorce_law_in_the_United_Kingdom',
+                    'Wills and Trusts': 'https://en.wikipedia.org/wiki/Inheritance_law_in_the_United_Kingdom',
+                    'Bankruptcy': 'https://en.wikipedia.org/wiki/Bankruptcy_in_the_United_Kingdom',
+                    'Adoption': 'https://en.wikipedia.org/wiki/Adoption_in_the_United_Kingdom',
+                    'Civil Rights': 'https://en.wikipedia.org/wiki/Human_rights_in_the_United_Kingdom',
+                    'Social Security': 'https://en.wikipedia.org/wiki/Social_security_in_the_United_Kingdom'
+                }
+
+            };
+            if (links[country] && links[country][category]) {
+                window.location.href = links[country][category];
+            } else {
+                alert('No information available for the selected combination.');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

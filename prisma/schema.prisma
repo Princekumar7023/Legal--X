@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model lawyerDetails {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String    @unique
+  name          String
+  image         String?
+  category      String[]
+  phone         String
+  barCouncil    String
+  nationality   String
+  experience    String
+  about         String
+  education     String
+  officeAddress String
+  email         String
+  languages     String[]
+  createdAt     DateTime? @default(now())
+}
+
+model Messages {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  chatId        String    @unique
+  senderId      String
+  senderName    String
+  senderPic     String
+  receiverId    String
+  receiverName  String
+  receiverPic   String
+  messages      Message[]
+  createdAt     DateTime? @default(now())
+}
+
+type Message {
+  senderId   String
+  receiverId String
+  message    String
+  createdAt  DateTime? @default(now())
+}
