@@ -19,6 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 
 interface Service {
+  link: string;
   title: string;
   price: number;
   originalPrice: number;
