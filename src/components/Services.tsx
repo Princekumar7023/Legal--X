@@ -40,7 +40,7 @@ const serviceCategories: ServiceCategory[] = [
         price: 3499,
         originalPrice: 8999,
         discount: 62,
-        link:"https://spf.bio/howyE"
+        link:"https://spf.bio/howyE",
         features: [
           "Get your term sheet reviewed by the best startup lawyers",
           "Understand the key terms of your term sheet",
